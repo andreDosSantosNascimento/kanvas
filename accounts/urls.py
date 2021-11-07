@@ -1,9 +1,9 @@
 from django.urls import path
 
-from accounts.views import create_user, get_all_users, login
+from accounts.views import HandleGetAllUsers, HandleLoginUser, create_user
 
 urlpatterns = [
     path("accounts/", create_user),
-    path("users/", get_all_users),
-    path("login/", login),
+    path("users/", HandleGetAllUsers.as_view()),
+    path("login/", HandleLoginUser.as_view()),
 ]
