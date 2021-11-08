@@ -15,6 +15,7 @@ from django.db import IntegrityError
 class HandleGetAllUsers(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsInstructor]
+    name = "HandleGetAllUsers"
 
     def get(self, _) -> Response:
         users = User.objects.all()

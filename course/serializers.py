@@ -1,8 +1,12 @@
 from rest_framework import serializers
-from accounts.serializers import UserSerializers
+
+
+class UsersInCoursesSeriealizers(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    username = serializers.CharField()
 
 
 class CourseSerializers(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     name = serializers.CharField()
-    users = UserSerializers(many=True)
+    users = UsersInCoursesSeriealizers(many=True)
