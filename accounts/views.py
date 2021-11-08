@@ -44,13 +44,13 @@ class HandleLoginUser(APIView):
 
 
 class HandleUser(APIView):
-    def post(request):
+    def post(self, request):
         try:
             data = {
                 "username": str(request.data["username"]),
                 "password": str(request.data["password"]),
-                "is_superuser": bool(request.data["is_superuser"]),
-                "is_staff": bool(request.data["is_staff"]),
+                "is_superuser": request.data["is_superuser"],
+                "is_staff": request.data["is_staff"],
             }
 
             newUser = User.objects.create_user(**data)
