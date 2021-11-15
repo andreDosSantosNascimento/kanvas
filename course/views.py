@@ -18,7 +18,7 @@ from django.contrib.auth.models import User
 class HandleCreateCourse(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsInstructor]
-    name = "Handle course"
+    name = "Course"
 
     def post(self, request) -> Response:
         try:
@@ -45,7 +45,7 @@ class HandleCreateCourse(APIView):
 class HandleCourseById(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsInstructor]
-    name = "Handle course"
+    name = "Course"
 
     def put(self, request, course_id="") -> Response:
         try:
@@ -95,7 +95,7 @@ class HandleCourseById(APIView):
 class HandleCourseUsers(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsInstructor]
-    name = "Handle course users"
+    name = "Course"
 
     def put(self, request, course_id="") -> Response:
         try:

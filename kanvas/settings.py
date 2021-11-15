@@ -45,6 +45,7 @@ THIRD_PARTY_APPS = [
 MY_APPS = [
     "accounts.apps.AccountsConfig",
     "course.apps.CourseConfig",
+    "activity.apps.ActivityConfig",
 ]
 INSTALLED_APPS = THIRD_PARTY_APPS + DJANGO_APPS + MY_APPS
 

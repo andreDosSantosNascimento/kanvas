@@ -9,5 +9,7 @@ class OnlyThisError(Exception):
 
 
 class BadRequestError(Exception):
-    def __init__(self) -> None:
-        self.message = {"errors": "Bad request"}
+    def __init__(
+        self, message="You can not change an Activity with submissions"
+    ) -> None:
+        self.message = {"error": message}
