@@ -107,7 +107,7 @@ class HandleCourseUsers(APIView):
             usersList = data["user_ids"]
 
             if type(usersList) != list:
-                raise BadRequestError
+                raise BadRequestError("Bad request")
 
             for id in usersList:
                 user = User.objects.get(id=id)
