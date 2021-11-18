@@ -1,19 +1,19 @@
-from django.contrib.auth.models import User
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
 
-from kanvas.exceptions import BadRequestError, NotFoundError, OnlyThisError
+from kanvas.exceptions import BadRequestError
 from kanvas.permissions import IsFacilitador, IsStudent
 
+from django.contrib.auth.models import User
 from django.db import IntegrityError
 
 from activity.models import Activity, Submission
 from activity.serializers import ActivitySerializer, SubmissionSerializer
 
 
-class handleActivities(APIView):
+class HandleActivities(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsFacilitador]
     name = "Activity"
@@ -40,7 +40,7 @@ class handleActivities(APIView):
         return Response(activitiesSerializers, status=status.HTTP_200_OK)
 
 
-class handleActivitiesById(APIView):
+class HandleActivitiesById(APIView):
     def put(self, request, activity_id="") -> Response:
         try:
             data = request.data
@@ -69,7 +69,7 @@ class handleActivitiesById(APIView):
             return Response(err.message, status=status.HTTP_400_BAD_REQUEST)
 
 
-class handleSubmission(APIView):
+class HandleSubmission(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsStudent]
     name = "Submission"
@@ -93,7 +93,7 @@ class handleSubmission(APIView):
         return Response(submission, status=status.HTTP_201_CREATED)
 
 
-class handleSubmissionById(APIView):
+class HandleSubmissionById(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsFacilitador]
     name = "Submission"
@@ -107,7 +107,7 @@ class handleSubmissionById(APIView):
         return Response(submission, status=status.HTTP_200_OK)
 
 
-class handleGetSubmissions(APIView):
+class HandleGetSubmissions(APIView):
     authentication_classes = [TokenAuthentication]
 
     def get(self, request) -> Response:

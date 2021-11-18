@@ -1,16 +1,16 @@
 from django.urls import path
 from activity.views import (
-    handleActivities,
-    handleActivitiesById,
-    handleGetSubmissions,
-    handleSubmission,
-    handleSubmissionById,
+    HandleActivities,
+    HandleActivitiesById,
+    HandleGetSubmissions,
+    HandleSubmission,
+    HandleSubmissionById,
 )
 
 urlpatterns = [
-    path("activities/", handleActivities.as_view()),
-    path("activities/<int:activity_id>/", handleActivitiesById.as_view()),
-    path("activities/<int:activity_id>/submissions/", handleSubmission.as_view()),
-    path("submissions/<int:submission_id>/", handleSubmissionById.as_view()),
-    path("submissions/", handleGetSubmissions.as_view()),
+    path("activities/", HandleActivities.as_view()),
+    path("activities/<int:activity_id>/", HandleActivitiesById.as_view()),
+    path("activities/<int:activity_id>/submissions/", HandleSubmission.as_view()),
+    path("submissions/<int:submission_id>/", HandleSubmissionById.as_view()),
+    path("submissions/", HandleGetSubmissions.as_view()),
 ]
